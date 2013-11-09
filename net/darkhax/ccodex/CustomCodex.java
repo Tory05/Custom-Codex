@@ -2,10 +2,12 @@ package net.darkhax.ccodex;
 
 import java.util.Arrays;
 
+import net.darkhax.ccodex.event.EntityConstructingEvent;
 import net.darkhax.ccodex.handler.ConectionHandler;
 import net.darkhax.ccodex.proxy.ServerProxy;
 import net.darkhax.ccodex.util.Config;
 import net.darkhax.ccodex.util.Reference;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
@@ -33,6 +35,8 @@ public class CustomCodex {
 
 		getModMeta(event.getModMetadata());
 		Config.createConfig(event);
+		
+		MinecraftForge.EVENT_BUS.register(new EntityConstructingEvent());
 	}
 
 	@EventHandler
