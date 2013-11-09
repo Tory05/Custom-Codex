@@ -2,6 +2,7 @@ package net.darkhax.ccodex;
 
 import java.util.Arrays;
 
+import net.darkhax.ccodex.handler.ConectionHandler;
 import net.darkhax.ccodex.proxy.ServerProxy;
 import net.darkhax.ccodex.util.Config;
 import net.darkhax.ccodex.util.Reference;
@@ -13,6 +14,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = Reference.ID, name = Reference.NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
@@ -35,11 +38,7 @@ public class CustomCodex {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 
-	}
-
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
-
+		NetworkRegistry.instance().registerConnectionHandler(new ConectionHandler());
 	}
 
 	private void getModMeta(ModMetadata meta) {
