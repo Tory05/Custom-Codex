@@ -49,6 +49,17 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties {
 	}
 	
 	public void setTrue() {
+		
 		this.haBook = true;
+	}
+	
+	public void setFalse() {
+		
+		this.haBook = false;
+	}
+	
+	public boolean hasBook() {
+		
+		return this.haBook;
 	}
 }

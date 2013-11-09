@@ -11,12 +11,14 @@ public class PlayerHelper {
 	
 	public static void givePlayerBook(EntityPlayer player) {
 		
-		if (!hasHadBook(player)) {
+		ExtendedPlayerProperties props = ExtendedPlayerProperties.get(player);
+		if (!props.hasBook()) {
 			
 			if (player.inventory.getFirstEmptyStack() != -1){
 				
 				BookHelper.setBookInfo(Config.bookAuthor, Config.bookName, Config.page1, Config.page2, Config.page3, Config.page4, Config.page5);
 				player.inventory.addItemStackToInventory(BookHelper.book);
+				props.setTrue();
 			}
 			
 			else {
